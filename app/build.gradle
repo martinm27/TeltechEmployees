@@ -1,0 +1,15 @@
+apply plugin: 'com.android.application'
+
+apply from: "$rootDir/buildSrc/src/CommonAndroid.gradle"
+
+android {
+    defaultConfig {
+        applicationId = "com.five.shoppify"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation Layout.fragmentContainer
+}
