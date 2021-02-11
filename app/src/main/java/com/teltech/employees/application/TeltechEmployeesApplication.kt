@@ -8,6 +8,7 @@ import com.teltech.employees.coreui.di.coreUiModule
 import com.teltech.employees.di.appModule
 import com.teltech.employees.employeeslib.di.employeesLibModule
 import com.teltech.employees.imagelib.di.imageLibModule
+import com.teltech.employees.master.di.masterModule
 import com.teltech.employees.navigation.navigationModule
 import com.teltech.employees.network.di.networkModule
 import org.koin.android.ext.koin.androidContext
@@ -33,6 +34,7 @@ class TeltechEmployeesApplication : Application() {
                     coreUiModule(),
                     employeesLibModule(),
                     imageLibModule(),
+                    masterModule(),
                     navigationModule(),
                     networkModule(),
                     threadingModule()
@@ -40,5 +42,4 @@ class TeltechEmployeesApplication : Application() {
             )
         }
     }
-
 }

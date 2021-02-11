@@ -1,0 +1,22 @@
+apply plugin: 'com.android.library'
+
+apply from: "$rootDir/buildSrc/src/CommonAndroid.gradle"
+apply from: "$rootDir/buildSrc/src/testing.gradle"
+
+android {
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation project(":core")
+    implementation project(":coreui")
+    implementation project(":navigation")
+    implementation project(":imagelib")
+
+    implementation Layout.recyclerView
+    implementation Layout.constraintLayout
+    implementation UI.materialComponents
+}
