@@ -4,6 +4,8 @@ apply from: "$rootDir/buildSrc/src/CommonAndroid.gradle"
 
 dependencies {
 
+    implementation project(":coreui")
+
     implementation Glide.glide
     implementation Glide.glideProcessor
     implementation Layout.swipeRefreshLayout

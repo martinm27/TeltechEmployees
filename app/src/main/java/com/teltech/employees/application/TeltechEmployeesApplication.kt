@@ -4,6 +4,7 @@ import android.app.Application
 import com.teltech.employees.core.appconfig.RxJavaErrorHandlingAppConfig
 import com.teltech.employees.core.appconfig.TimberAppConfig
 import com.teltech.employees.core.di.threadingModule
+import com.teltech.employees.coreui.di.coreUiModule
 import com.teltech.employees.di.appModule
 import com.teltech.employees.imagelib.di.imageLibModule
 import com.teltech.employees.navigation.navigationModule
@@ -17,6 +18,7 @@ class TeltechEmployeesApplication : Application() {
         super.onCreate()
 
         initKoin()
+
         TimberAppConfig().configure()
         RxJavaErrorHandlingAppConfig().configure()
     }
@@ -27,6 +29,7 @@ class TeltechEmployeesApplication : Application() {
             modules(
                 listOf(
                     appModule(),
+                    coreUiModule(),
                     imageLibModule(),
                     navigationModule(),
                     networkModule(),

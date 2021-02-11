@@ -1,0 +1,17 @@
+apply plugin: 'com.android.library'
+
+apply from: "$rootDir/buildSrc/src/CommonAndroid.gradle"
+
+android {
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation project(":navigation")
+    implementation project(":core")
+
+    implementation Layout.recyclerView
+    implementation Layout.swipeRefreshLayout
+}

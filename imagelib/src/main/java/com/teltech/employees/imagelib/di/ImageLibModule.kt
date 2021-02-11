@@ -8,5 +8,5 @@ import org.koin.dsl.module
 
 fun imageLibModule(): Module = module {
 
-    single<ImageQueryLoader> { ImageQueryLoaderImpl(androidContext()) }
+    single<ImageQueryLoader> { ImageQueryLoaderImpl(androidContext(), get()) }
 }

@@ -8,10 +8,12 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.teltech.employees.coreui.utils.CircularProgressDrawableFactory
 import com.teltech.employees.imagelib.R
 
 class ImageQueryLoaderImpl(
-    private val context: Context
+    private val context: Context,
+    private val circularProgressDrawableFactory: CircularProgressDrawableFactory
 ) : ImageQueryLoader {
 
     override fun loadWithKey(
@@ -20,7 +22,7 @@ class ImageQueryLoaderImpl(
         errorResourceId: Int,
         skipMemoryCache: Boolean
     ) {
-     /*   val placeholder =
+        val placeholder =
             circularProgressDrawableFactory.createProgressDrawable(context.resources.getDimension(R.dimen.imagelib_circular_drawable_radius))
         clearImage(target)
 
@@ -30,7 +32,7 @@ class ImageQueryLoaderImpl(
             placeholder,
             ContextCompat.getDrawable(context, errorResourceId),
             skipMemoryCache
-        )*/
+        )
     }
 
     private fun showImage(
@@ -47,7 +49,6 @@ class ImageQueryLoaderImpl(
                     .placeholder(placeholder)
                     .error(errorPlaceholder)
             )
-            .asBitmap()
             .load(image)
             .diskCacheStrategy(DiskCacheStrategy.NONE)
             .skipMemoryCache(skipMemoryCache)
