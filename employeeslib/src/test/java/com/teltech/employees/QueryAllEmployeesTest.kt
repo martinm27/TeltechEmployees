@@ -1,5 +1,6 @@
 package com.teltech.employees
 
+import com.teltech.employees.employeeslib.mapper.generateImageUrl
 import com.teltech.employees.employeeslib.model.Employee
 import com.teltech.employees.employeeslib.usecase.QueryAllEmployees
 import com.teltech.employees.network.model.APIEmployee
@@ -126,10 +127,11 @@ class QueryAllEmployeesTest {
         )
 
         emptyDepartmentEmployeeMapped = Employee(
+            0,
             "N/A",
             "Dan",
             "Pannasch",
-            "dan-2019",
+            generateImageUrl("dan-2019"),
             "VP of Marketing",
             "Studio Magus",
             "Hello, I'm Dan",
@@ -137,10 +139,11 @@ class QueryAllEmployeesTest {
         )
 
         nullAgencyEmployeeMapped = Employee(
+            0,
             "executive team",
             "Patrick",
             "Falzon",
-            "patrick",
+            generateImageUrl("patrick"),
             "General Manager",
             "N/A",
             "Hello, I'm Patrick",
@@ -148,6 +151,7 @@ class QueryAllEmployeesTest {
         )
 
         nullImageEmployeeMapped = Employee(
+            0,
             "operations",
             "Nate",
             "Joel",

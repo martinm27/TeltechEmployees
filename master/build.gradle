@@ -15,6 +15,7 @@ dependencies {
     implementation project(":coreui")
     implementation project(":navigation")
     implementation project(":imagelib")
+    implementation project(":employeeslib")
 
     implementation Layout.recyclerView
     implementation Layout.constraintLayout

@@ -2,6 +2,7 @@ package com.teltech.employees.coreui
 
 import androidx.annotation.CallSuper
 import androidx.lifecycle.ViewModel
+import com.teltech.employees.core.extension.exponentialRetry
 import com.teltech.employees.navigation.Router
 import com.teltech.employees.navigation.RoutingActionsDispatcher
 import io.reactivex.Completable
