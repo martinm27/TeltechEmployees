@@ -1,7 +1,7 @@
 apply plugin: 'kotlin-allopen'
 
 allOpen {
-    annotation('com.five.shoppify.core.mock.Mockable')
+    annotation('com.teltech.employees.core.mock.Mockable')
 }
 
 android {

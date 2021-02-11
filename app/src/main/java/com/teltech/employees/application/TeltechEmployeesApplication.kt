@@ -1,6 +1,9 @@
 package com.teltech.employees.application
 
 import android.app.Application
+import com.teltech.employees.core.appconfig.RxJavaErrorHandlingAppConfig
+import com.teltech.employees.core.appconfig.TimberAppConfig
+import com.teltech.employees.core.di.threadingModule
 import com.teltech.employees.di.appModule
 import com.teltech.employees.imagelib.di.imageLibModule
 import com.teltech.employees.navigation.navigationModule
@@ -12,7 +15,10 @@ class TeltechEmployeesApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
         initKoin()
+        TimberAppConfig().configure()
+        RxJavaErrorHandlingAppConfig().configure()
     }
 
     private fun initKoin() {
@@ -24,6 +30,7 @@ class TeltechEmployeesApplication : Application() {
                     imageLibModule(),
                     navigationModule(),
                     networkModule(),
+                    threadingModule()
                 )
             )
         }

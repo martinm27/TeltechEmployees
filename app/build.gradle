@@ -4,15 +4,17 @@ apply from: "$rootDir/buildSrc/src/CommonAndroid.gradle"
 
 android {
     defaultConfig {
-        applicationId = "com.five.shoppify"
+        applicationId = "com.teltech.employees"
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation project(":core")
     implementation project(":network")
     implementation project(":navigation")
+    implementation project(":imagelib")
 
     implementation Layout.fragmentContainer
 }
