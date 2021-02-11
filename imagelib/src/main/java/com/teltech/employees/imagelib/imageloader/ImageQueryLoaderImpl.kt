@@ -9,6 +9,7 @@ import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.teltech.employees.coreui.utils.CircularProgressDrawableFactory
+import com.teltech.employees.imagelib.BuildConfig
 import com.teltech.employees.imagelib.R
 
 class ImageQueryLoaderImpl(
@@ -27,7 +28,7 @@ class ImageQueryLoaderImpl(
         clearImage(target)
 
         showImage(
-            key,
+            BuildConfig.SERVER_URL + key,
             target,
             placeholder,
             ContextCompat.getDrawable(context, errorResourceId),
@@ -36,7 +37,7 @@ class ImageQueryLoaderImpl(
     }
 
     private fun showImage(
-        image: Any,
+        image: String,
         target: ImageView,
         placeholder: Drawable,
         errorPlaceholder: Drawable?,

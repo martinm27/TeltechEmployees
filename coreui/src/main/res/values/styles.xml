@@ -14,8 +14,4 @@
         <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
         <item name="android:clickable">true</item>
     </style>
-
-    <style name="BackButton" parent="IconButton">
-        <item name="srcCompat">@drawable/ic_back</item>
-    </style>
 </resources>

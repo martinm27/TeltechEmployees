@@ -1,5 +1,6 @@
 package com.teltech.employees.network.di
 
+import com.teltech.employees.network.BuildConfig
 import com.teltech.employees.network.service.EmployeesService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -10,8 +11,6 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
-
-private const val API_URL = "https://teltech.co/"
 
 fun networkModule(): Module = module {
 
@@ -32,7 +31,7 @@ fun networkModule(): Module = module {
 
     single<EmployeesService> {
         Retrofit.Builder()
-            .baseUrl(API_URL)
+            .baseUrl(BuildConfig.SERVER_URL)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .client(get())

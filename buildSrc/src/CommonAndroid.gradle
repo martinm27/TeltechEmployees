@@ -20,6 +20,8 @@ android {
     buildTypes {
         debug {
             versionNameSuffix "-debug"
+
+            buildConfigField "String", "SERVER_URL", '"https://teltech.co/"'
         }
     }
 }
