@@ -1,3 +1,4 @@
+include ':employeeslib'
 rootProject.name = "TeltechEmployees"
 include ':app'
 include ':core'

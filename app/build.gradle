@@ -13,6 +13,7 @@ dependencies {
 
     implementation project(":core")
     implementation project(":coreui")
+    implementation project(":employeeslib")
     implementation project(":network")
     implementation project(":navigation")
     implementation project(":imagelib")
