@@ -7,5 +7,5 @@ import retrofit2.http.GET
 interface EmployeesService {
 
     @GET("/teltechiansFlat.json")
-    fun getProducts(): Single<List<APIEmployee>>
+    fun getEmployees(): Single<List<APIEmployee>>
 }
