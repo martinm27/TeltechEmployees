@@ -2,6 +2,7 @@ package com.teltech.employees.application
 
 import android.app.Application
 import com.teltech.employees.di.appModule
+import com.teltech.employees.imagelib.di.imageLibModule
 import com.teltech.employees.navigation.navigationModule
 import com.teltech.employees.network.di.networkModule
 import org.koin.android.ext.koin.androidContext
@@ -20,6 +21,7 @@ class TeltechEmployeesApplication : Application() {
             modules(
                 listOf(
                     appModule(),
+                    imageLibModule(),
                     navigationModule(),
                     networkModule(),
                 )
