@@ -12,6 +12,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(":network")
+    implementation project(":navigation")
 
     implementation Layout.fragmentContainer
 }

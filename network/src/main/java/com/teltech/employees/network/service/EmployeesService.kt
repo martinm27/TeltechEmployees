@@ -1,6 +1,6 @@
-package com.teltech.network.service
+package com.teltech.employees.network.service
 
-import com.teltech.network.model.APIEmployee
+import com.teltech.employees.network.model.APIEmployee
 import io.reactivex.Single
 import retrofit2.http.GET
 

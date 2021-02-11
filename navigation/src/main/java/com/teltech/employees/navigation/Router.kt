@@ -1,0 +1,14 @@
+package com.teltech.employees.navigation
+
+interface Router {
+
+    fun finishHostActivity()
+
+    fun clearAll()
+
+    fun goBack()
+
+    fun showEmployees()
+
+    fun showEmployeeDetails(name: String)
+}

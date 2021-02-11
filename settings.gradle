@@ -1,3 +1,4 @@
-include ':network'
-include ':app'
 rootProject.name = "TeltechEmployees"
+include ':app'
+include ':navigation'
+include ':network'

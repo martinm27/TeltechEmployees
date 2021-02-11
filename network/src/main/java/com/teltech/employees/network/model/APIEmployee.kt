@@ -1,4 +1,4 @@
-package com.teltech.network.model
+package com.teltech.employees.network.model
 
 import com.google.gson.annotations.SerializedName
 

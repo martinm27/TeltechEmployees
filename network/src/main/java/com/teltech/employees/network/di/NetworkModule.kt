@@ -1,6 +1,6 @@
-package com.teltech.network.di
+package com.teltech.employees.network.di
 
-import com.teltech.network.service.EmployeesService
+import com.teltech.employees.network.service.EmployeesService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
