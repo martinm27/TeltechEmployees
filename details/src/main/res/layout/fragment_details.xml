@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true">
+
+    <ImageView
+        android:id="@+id/employee_image"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/details_employee_imageHeight"
+        android:fitsSystemWindows="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_placeholder" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingStart="@dimen/normal_margin"
+        android:paddingTop="@dimen/normal_margin"
+        android:paddingEnd="@dimen/normal_margin"
+        android:paddingBottom="@dimen/normal_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/employee_image">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/employee_name"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Jacques Webster" />
+
+            <TextView
+                android:id="@+id/employee_role"
+                style="@style/TextSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/smallest_margin"
+                app:layout_constraintStart_toStartOf="@id/employee_name"
+                app:layout_constraintTop_toBottomOf="@id/employee_name"
+                tools:text="Customer Feedback Analyst" />
+
+            <TextView
+                android:id="@+id/employee_intro"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/large_margin"
+                android:textStyle="italic|bold"
+                app:layout_constraintStart_toStartOf="@id/employee_name"
+                app:layout_constraintTop_toBottomOf="@id/employee_role"
+                tools:text="What's up guys, I'm Kevin!" />
+
+            <TextView
+                android:id="@+id/employee_description"
+                style="@style/TextSpeaking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin"
+                app:layout_constraintStart_toStartOf="@id/employee_name"
+                app:layout_constraintTop_toBottomOf="@id/employee_intro"
+                tools:text="Working in Quality Assurance, I make sure our apps are as flawless and bug-free as possible. When I'm not at work, I enjoy playing video games and spending time with my friends and family. I also enjoy taking on new and interesting challenges." />
+
+            <TextView
+                android:id="@+id/employee_department_part"
+                style="@style/BaseText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/large_margin"
+                android:text="@string/details_department"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/employee_name"
+                app:layout_constraintTop_toBottomOf="@id/employee_description" />
+
+            <TextView
+                android:id="@+id/employee_department"
+                style="@style/TextSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/smallest_margin"
+                app:layout_constraintBottom_toBottomOf="@id/employee_department_part"
+                app:layout_constraintStart_toEndOf="@id/employee_department_part"
+                app:layout_constraintTop_toTopOf="@id/employee_department_part"
+                tools:text="operations" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

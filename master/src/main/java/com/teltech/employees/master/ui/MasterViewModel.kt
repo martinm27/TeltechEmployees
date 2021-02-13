@@ -30,7 +30,7 @@ class MasterViewModel(
         }
 
     fun showEmployeeDetails(index: Int) = dispatchRoutingAction {
-        // TODO: Show employee details
+        it.showEmployeeDetails(index)
     }
 }
 

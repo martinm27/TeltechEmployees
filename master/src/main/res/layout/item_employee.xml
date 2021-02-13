@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toStartOf="@+id/employee_details"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_placehodler" />
+        tools:src="@drawable/ic_placeholder" />
 
     <LinearLayout
         android:id="@+id/employee_details"
@@ -40,12 +40,12 @@
             tools:text="Jacques Webster" />
 
         <TextView
-            android:id="@+id/employee_status"
+            android:id="@+id/employee_role"
             style="@style/TextSubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/smallest_margin"
-            tools:text="Operations - Customer Feedback Analyst" />
+            tools:text="Customer Feedback Analyst" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

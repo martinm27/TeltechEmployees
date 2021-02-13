@@ -2,6 +2,7 @@ rootProject.name = "TeltechEmployees"
 include ':app'
 include ':core'
 include ':coreui'
+include ':details'
 include ':employeeslib'
 include ':imagelib'
 include ':master'

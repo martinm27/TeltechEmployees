@@ -6,8 +6,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:statusBarColor">@color/toolbar_color</item>
+        <item name="android:statusBarColor">@android:color/white</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="IconButton">
@@ -33,5 +35,10 @@
         <item name="android:textSize">@dimen/small_medium_textSize</item>
         <item name="android:letterSpacing">0.06</item>
         <item name="android:textColor">@color/dark_gray</item>
+    </style>
+
+    <style name="TextSpeaking" parent="BaseText">
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">@dimen/medium_textSize</item>
     </style>
 </resources>

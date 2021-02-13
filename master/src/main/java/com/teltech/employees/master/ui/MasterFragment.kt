@@ -23,12 +23,7 @@ class MasterFragment :
     override val model: MasterViewModel by viewModel()
 
     private val masterAdapter: MasterAdapter by inject(
-        parameters = {
-            parametersOf(
-                layoutInflater,
-                model::showEmployeeDetails
-            )
-        }
+        parameters = { parametersOf(layoutInflater, model::showEmployeeDetails) }
     )
 
     override fun FragmentMasterBinding.initialiseView(view: View, savedInstanceState: Bundle?) {

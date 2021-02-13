@@ -49,12 +49,12 @@ class MasterAdapter(
                     imageLoader.loadWithKey(
                         employeeThumbnail,
                         imageUrl,
-                        R.drawable.ic_placehodler
+                        R.drawable.ic_placeholder
                     )
                 }
 
                 employeeName.text = title
-                employeeStatus.text = subtitle
+                employeeRole.text = subtitle
             }
         }
     }

@@ -48,6 +48,7 @@ class ImageQueryLoaderImpl(
                     .error(errorPlaceholder)
             )
             .load(image)
+            .skipMemoryCache(true)
             .into(target)
     }
 

@@ -10,5 +10,5 @@ interface Router {
 
     fun showEmployees()
 
-    fun showEmployeeDetails(name: String)
+    fun showEmployeeDetails(employeeId: Int)
 }

@@ -4,6 +4,7 @@ import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.teltech.employees.R
+import com.teltech.employees.details.ui.DetailsFragment
 import com.teltech.employees.master.ui.MasterFragment
 
 private const val LAST_FRAGMENT = 0
@@ -20,7 +21,10 @@ class RouterImpl(
         add(MAIN_FLOW_CONTAINER, MasterFragment(), MasterFragment.TAG)
     }
 
-    override fun showEmployeeDetails(name: String): Unit = TODO("Not yet implemented")
+    override fun showEmployeeDetails(employeeId: Int): Unit =
+        fragmentManager.inTransactionAndAddToBackStack {
+            add(MAIN_FLOW_CONTAINER, DetailsFragment.newInstance(employeeId), DetailsFragment.TAG)
+        }
 
     override fun clearAll() = fragmentManager.safeClearBackStack()
 

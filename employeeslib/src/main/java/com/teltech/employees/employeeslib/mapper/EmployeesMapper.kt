@@ -1,5 +1,6 @@
 package com.teltech.employees.employeeslib.mapper
 
+import com.teltech.employees.core.constants.SPACING_SEPARATOR
 import com.teltech.employees.core.extension.ifNullOrEmpty
 import com.teltech.employees.employeeslib.BuildConfig
 import com.teltech.employees.employeeslib.model.Employee
@@ -44,3 +45,7 @@ fun generateImageUrl(image: String?): String {
         .append(JPG_FORMAT)
         .toString()
 }
+
+fun toEmployeeName(name: String, surname: String) =
+    StringBuilder().append(name).append(SPACING_SEPARATOR).append(surname).toString()
+

@@ -9,9 +9,7 @@ import com.teltech.employees.network.service.EmployeesService
 import io.reactivex.Flowable
 
 @Mockable
-class QueryAllEmployees(
-    private val employeesService: EmployeesService
-) : QueryUseCase<List<Employee>> {
+class QueryAllEmployees(private val employeesService: EmployeesService) : QueryUseCase<List<Employee>> {
 
     override fun invoke(): Flowable<List<Employee>> =
         employeesService.getEmployees()

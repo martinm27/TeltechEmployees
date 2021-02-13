@@ -5,6 +5,7 @@ import com.teltech.employees.core.appconfig.RxJavaErrorHandlingAppConfig
 import com.teltech.employees.core.appconfig.TimberAppConfig
 import com.teltech.employees.core.di.threadingModule
 import com.teltech.employees.coreui.di.coreUiModule
+import com.teltech.employees.details.di.detailsModule
 import com.teltech.employees.di.appModule
 import com.teltech.employees.employeeslib.di.employeesLibModule
 import com.teltech.employees.imagelib.di.imageLibModule
@@ -32,6 +33,7 @@ class TeltechEmployeesApplication : Application() {
                 listOf(
                     appModule(),
                     coreUiModule(),
+                    detailsModule(),
                     employeesLibModule(),
                     imageLibModule(),
                     masterModule(),
