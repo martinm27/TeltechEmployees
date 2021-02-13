@@ -61,9 +61,9 @@ abstract class BaseFragment<ViewState : Any, Binding : ViewBinding>(
         disposables.add(disposable)
     }
 
-    protected fun setStatusBarColor(@ColorRes color: Int) {
+    protected fun setStatusBarColor(@ColorRes colorResourceId: Int) {
         context?.let {
-            activity?.window?.statusBarColor = ContextCompat.getColor(it, color)
+            activity?.window?.statusBarColor = ContextCompat.getColor(it, colorResourceId)
         }
     }
 }

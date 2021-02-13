@@ -7,7 +7,6 @@ interface ImageQueryLoader {
     fun loadWithKey(
         target: ImageView,
         key: String,
-        errorResourceId: Int,
-        skipMemoryCache: Boolean = true
+        errorResourceId: Int
     )
 }

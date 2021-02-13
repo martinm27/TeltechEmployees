@@ -11,6 +11,5 @@
     <dimen name="small_medium_textSize">14sp</dimen>
     <dimen name="small_textSize">12sp</dimen>
 
-    <dimen name="toolbar_height">50dp</dimen>
-    <dimen name="toolbar_divider">2dp</dimen>
+    <dimen name="vertical_dividerSize">1dp</dimen>
 </resources>

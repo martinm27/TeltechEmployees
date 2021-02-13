@@ -2,8 +2,12 @@ package com.teltech.employees.coreui.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.AttributeSet
+import android.view.ViewOutlineProvider
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
+import com.teltech.employees.coreui.R
 
 open class DiffUtilCallback<T : ListItem> : DiffUtil.ItemCallback<T>() {
 

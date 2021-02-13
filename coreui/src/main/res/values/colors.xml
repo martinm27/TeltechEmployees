@@ -7,4 +7,6 @@
     <color name="gray_navigation_items">#777777</color>
     <color name="light_blue">#6A5ACD</color>
     <color name="toolbar_color">#D0FFF59B</color>
+    <color name="black">#171A32</color>
+    <color name="dark_gray">#8C8FA9</color>
 </resources>

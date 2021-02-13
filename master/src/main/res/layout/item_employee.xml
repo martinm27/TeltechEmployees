@@ -1,8 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:paddingStart="@dimen/normal_margin"
+    android:paddingTop="@dimen/normal_margin"
+    android:paddingEnd="@dimen/normal_margin"
+    android:paddingBottom="@dimen/normal_margin">
 
-    <!-- TODO -->
+    <ImageView
+        android:id="@+id/employee_thumbnail"
+        android:layout_width="@dimen/master_employee_imageWidth"
+        android:layout_height="@dimen/master_employee_imageHeight"
+        android:layout_marginEnd="@dimen/normal_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/employee_details"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_placehodler" />
 
+    <LinearLayout
+        android:id="@+id/employee_details"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/employee_thumbnail"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/employee_name"
+            style="@style/TextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Jacques Webster" />
+
+        <TextView
+            android:id="@+id/employee_status"
+            style="@style/TextSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/smallest_margin"
+            tools:text="Operations - Customer Feedback Analyst" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

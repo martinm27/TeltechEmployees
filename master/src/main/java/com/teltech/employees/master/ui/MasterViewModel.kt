@@ -29,7 +29,7 @@ class MasterViewModel(
             MasterViewState.EmployeesListViewState(employees.map(::toViewStateModel))
         }
 
-    fun showEmployeeDetails(index: Int, name: String, surname: String) = dispatchRoutingAction {
+    fun showEmployeeDetails(index: Int) = dispatchRoutingAction {
         // TODO: Show employee details
     }
 }

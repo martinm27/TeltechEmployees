@@ -6,6 +6,9 @@ import com.teltech.employees.employeeslib.model.Employee
 import com.teltech.employees.network.model.APIEmployee
 
 private const val UNKNOWN = "N/A"
+private const val IMAGES = "images/"
+private const val MEMBERS = "members/"
+private const val JPG_FORMAT = ".jpg"
 private const val EMPTY = ""
 
 fun toEmployees(apiEmployees: List<APIEmployee?>) =
@@ -35,6 +38,9 @@ fun generateImageUrl(image: String?): String {
 
     return StringBuilder()
         .append(BuildConfig.SERVER_URL)
+        .append(IMAGES)
+        .append(MEMBERS)
         .append(image)
+        .append(JPG_FORMAT)
         .toString()
 }

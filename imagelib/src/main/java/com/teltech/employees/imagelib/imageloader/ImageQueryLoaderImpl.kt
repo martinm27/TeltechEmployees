@@ -20,19 +20,17 @@ class ImageQueryLoaderImpl(
     override fun loadWithKey(
         target: ImageView,
         key: String,
-        errorResourceId: Int,
-        skipMemoryCache: Boolean
+        errorResourceId: Int
     ) {
         val placeholder =
             circularProgressDrawableFactory.createProgressDrawable(context.resources.getDimension(R.dimen.imagelib_circular_drawable_radius))
         clearImage(target)
 
         showImage(
-            BuildConfig.SERVER_URL + key,
+            key,
             target,
             placeholder,
             ContextCompat.getDrawable(context, errorResourceId),
-            skipMemoryCache
         )
     }
 
@@ -40,8 +38,7 @@ class ImageQueryLoaderImpl(
         image: String,
         target: ImageView,
         placeholder: Drawable,
-        errorPlaceholder: Drawable?,
-        skipMemoryCache: Boolean
+        errorPlaceholder: Drawable?
     ) {
         Glide.with(context)
             .applyDefaultRequestOptions(
@@ -51,8 +48,6 @@ class ImageQueryLoaderImpl(
                     .error(errorPlaceholder)
             )
             .load(image)
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .skipMemoryCache(skipMemoryCache)
             .into(target)
     }
 

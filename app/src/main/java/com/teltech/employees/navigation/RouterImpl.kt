@@ -4,6 +4,7 @@ import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.teltech.employees.R
+import com.teltech.employees.master.ui.MasterFragment
 
 private const val LAST_FRAGMENT = 0
 
@@ -15,7 +16,9 @@ class RouterImpl(
     fragmentManager: FragmentManager,
 ) : MainRouter(fragmentManager), Router {
 
-    override fun showEmployees(): Unit = TODO("Not yet implemented")
+    override fun showEmployees(): Unit = fragmentManager.inTransaction {
+        add(MAIN_FLOW_CONTAINER, MasterFragment(), MasterFragment.TAG)
+    }
 
     override fun showEmployeeDetails(name: String): Unit = TODO("Not yet implemented")
 

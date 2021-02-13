@@ -1,9 +1,9 @@
-include ':master'
-include ':employeeslib'
 rootProject.name = "TeltechEmployees"
 include ':app'
 include ':core'
 include ':coreui'
+include ':employeeslib'
 include ':imagelib'
+include ':master'
 include ':navigation'
 include ':network'
