@@ -1,5 +1,7 @@
 package com.teltech.employees.navigation
 
+import com.teltech.employees.navigation.model.EmployeeParcelable
+
 interface Router {
 
     fun finishHostActivity()
@@ -10,5 +12,5 @@ interface Router {
 
     fun showEmployees()
 
-    fun showEmployeeDetails(employeeId: Int)
+    fun showEmployeeDetails(employeeParcelable: EmployeeParcelable)
 }

@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager
 import com.teltech.employees.R
 import com.teltech.employees.details.ui.DetailsFragment
 import com.teltech.employees.master.ui.MasterFragment
+import com.teltech.employees.navigation.model.EmployeeParcelable
 
 private const val LAST_FRAGMENT = 0
 
@@ -21,9 +22,13 @@ class RouterImpl(
         add(MAIN_FLOW_CONTAINER, MasterFragment(), MasterFragment.TAG)
     }
 
-    override fun showEmployeeDetails(employeeId: Int): Unit =
+    override fun showEmployeeDetails(employeeParcelable: EmployeeParcelable) =
         fragmentManager.inTransactionAndAddToBackStack {
-            add(MAIN_FLOW_CONTAINER, DetailsFragment.newInstance(employeeId), DetailsFragment.TAG)
+            add(
+                MAIN_FLOW_CONTAINER,
+                DetailsFragment.newInstance(employeeParcelable),
+                DetailsFragment.TAG
+            )
         }
 
     override fun clearAll() = fragmentManager.safeClearBackStack()
@@ -31,12 +36,10 @@ class RouterImpl(
     override fun goBack() = dispatchOnMainThreadWithThrottle(this::goBackInternal)
 
     private fun goBackInternal() {
-        if (!propagateBackToTopFragment(fragmentManager)) {
-            if (fragmentManager.backStackEntryCount != LAST_FRAGMENT) {
-                fragmentManager.popBackStackImmediate()
-            } else {
-                finishHostActivity()
-            }
+        if (fragmentManager.backStackEntryCount != LAST_FRAGMENT) {
+            fragmentManager.popBackStackImmediate()
+        } else {
+            finishHostActivity()
         }
     }
 

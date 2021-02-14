@@ -1,12 +1,12 @@
 package com.teltech.employees.employeeslib.mapper
 
 import com.teltech.employees.core.constants.SPACING_SEPARATOR
+import com.teltech.employees.core.constants.UNKNOWN
 import com.teltech.employees.core.extension.ifNullOrEmpty
 import com.teltech.employees.employeeslib.BuildConfig
 import com.teltech.employees.employeeslib.model.Employee
 import com.teltech.employees.network.model.APIEmployee
 
-private const val UNKNOWN = "N/A"
 private const val IMAGES = "images/"
 private const val MEMBERS = "members/"
 private const val JPG_FORMAT = ".jpg"
@@ -47,5 +47,9 @@ fun generateImageUrl(image: String?): String {
 }
 
 fun toEmployeeName(name: String, surname: String) =
-    StringBuilder().append(name).append(SPACING_SEPARATOR).append(surname).toString()
+    if (name == UNKNOWN || surname == UNKNOWN) {
+        UNKNOWN
+    } else {
+        StringBuilder().append(name).append(SPACING_SEPARATOR).append(surname).toString()
+    }
 

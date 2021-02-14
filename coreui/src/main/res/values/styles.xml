@@ -12,9 +12,20 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="IconButton">
+    <style name="Icon">
+        <item name="android:layout_width">@dimen/min_clickable_icon_size</item>
+        <item name="android:layout_height">@dimen/min_clickable_icon_size</item>
+        <item name="android:padding">@dimen/min_clickable_icon_padding</item>
+    </style>
+
+    <style name="IconButton" parent="Icon">
         <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
         <item name="android:clickable">true</item>
+    </style>
+
+    <style name="ElevatedIconButton" parent="IconButton">
+        <item name="android:elevation">@dimen/elevatedIconButton_elevation</item>
+        <item name="android:background">@drawable/bg_elevated_button</item>
     </style>
 
     <!-- Base Text Styles -->

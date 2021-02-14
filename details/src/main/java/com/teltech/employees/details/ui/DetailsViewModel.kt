@@ -1,15 +1,18 @@
 package com.teltech.employees.details.ui
 
+import com.teltech.employees.core.constants.UNKNOWN
 import com.teltech.employees.coreui.BaseViewModel
-import com.teltech.employees.employeeslib.mapper.toEmployeeName
-import com.teltech.employees.employeeslib.model.Employee
-import com.teltech.employees.employeeslib.usecase.QueryEmployeeWithId
+import com.teltech.employees.navigation.model.EmployeeParcelable
 import com.teltech.employees.navigation.RoutingActionsDispatcher
+import io.reactivex.Flowable
 import io.reactivex.Scheduler
 
+/**
+ * This class is responsible for initial view state publishing but no other logic is
+ * present here because we cannot uniquely identify employees at the moment.
+ */
 class DetailsViewModel(
-    employeeId: Int,
-    queryEmployeeWithId: QueryEmployeeWithId,
+    employeeParcelable: EmployeeParcelable,
     mainThreadScheduler: Scheduler,
     backgroundScheduler: Scheduler,
     routingActionsDispatcher: RoutingActionsDispatcher
@@ -18,27 +21,19 @@ class DetailsViewModel(
     backgroundScheduler,
     routingActionsDispatcher
 ) {
-
     init {
-        query(queryEmployeeWithId(employeeId).map(this::toViewState))
+        query(Flowable.just(DetailsViewState(toViewStateModel(employeeParcelable))))
     }
 
-    private fun toViewState(employee: Employee?): DetailsViewState =
-        if (employee == null) {
-            DetailsViewState.Empty
-        } else {
-            DetailsViewState.Employee(toViewStateModel(employee))
-        }
-
-    private fun toViewStateModel(employee: Employee): DetailsViewStateModel =
+    private fun toViewStateModel(employee: EmployeeParcelable): DetailsViewStateModel =
         with(employee) {
             DetailsViewStateModel(
-                imageUrl,
-                toEmployeeName(name, surname),
-                title,
-                intro,
-                description,
-                department
+                imageUrl ?: UNKNOWN,
+                name ?: UNKNOWN,
+                role ?: UNKNOWN,
+                intro ?: UNKNOWN,
+                description ?: UNKNOWN,
+                department ?: UNKNOWN
             )
         }
 }

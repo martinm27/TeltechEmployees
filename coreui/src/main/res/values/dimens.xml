@@ -5,6 +5,7 @@
     <dimen name="small_margin">8dp</dimen>
     <dimen name="normal_margin">16dp</dimen>
     <dimen name="large_margin">24dp</dimen>
+    <dimen name="largest_margin">48dp</dimen>
 
     <dimen name="large_text">20sp</dimen>
     <dimen name="medium_textSize">16sp</dimen>
@@ -12,4 +13,8 @@
     <dimen name="small_textSize">12sp</dimen>
 
     <dimen name="vertical_dividerSize">1dp</dimen>
+
+    <dimen name="elevatedIconButton_elevation">8dp</dimen>
+    <dimen name="min_clickable_icon_size">48dp</dimen>
+    <dimen name="min_clickable_icon_padding">12dp</dimen>
 </resources>

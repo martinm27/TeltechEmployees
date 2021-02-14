@@ -8,13 +8,23 @@
     android:fitsSystemWindows="true">
 
     <ImageView
+        android:id="@+id/details_backButton"
+        style="@style/IconButton"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back"/>
+
+    <ImageView
         android:id="@+id/employee_image"
         android:layout_width="0dp"
         android:layout_height="@dimen/details_employee_imageHeight"
+        android:layout_marginTop="@dimen/normal_margin"
         android:fitsSystemWindows="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/details_backButton"
         tools:src="@drawable/ic_placeholder" />
 
     <ScrollView
@@ -56,27 +66,6 @@
                 tools:text="Customer Feedback Analyst" />
 
             <TextView
-                android:id="@+id/employee_intro"
-                style="@style/TextTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/large_margin"
-                android:textStyle="italic|bold"
-                app:layout_constraintStart_toStartOf="@id/employee_name"
-                app:layout_constraintTop_toBottomOf="@id/employee_role"
-                tools:text="What's up guys, I'm Kevin!" />
-
-            <TextView
-                android:id="@+id/employee_description"
-                style="@style/TextSpeaking"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/small_margin"
-                app:layout_constraintStart_toStartOf="@id/employee_name"
-                app:layout_constraintTop_toBottomOf="@id/employee_intro"
-                tools:text="Working in Quality Assurance, I make sure our apps are as flawless and bug-free as possible. When I'm not at work, I enjoy playing video games and spending time with my friends and family. I also enjoy taking on new and interesting challenges." />
-
-            <TextView
                 android:id="@+id/employee_department_part"
                 style="@style/BaseText"
                 android:layout_width="wrap_content"
@@ -85,7 +74,7 @@
                 android:text="@string/details_department"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/employee_name"
-                app:layout_constraintTop_toBottomOf="@id/employee_description" />
+                app:layout_constraintTop_toBottomOf="@id/employee_role" />
 
             <TextView
                 android:id="@+id/employee_department"
@@ -97,6 +86,29 @@
                 app:layout_constraintStart_toEndOf="@id/employee_department_part"
                 app:layout_constraintTop_toTopOf="@id/employee_department_part"
                 tools:text="operations" />
+
+            <TextView
+                android:id="@+id/employee_intro"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/largest_margin"
+                android:textStyle="italic|bold"
+                app:layout_constraintStart_toStartOf="@id/employee_name"
+                app:layout_constraintTop_toBottomOf="@id/employee_department_part"
+                tools:text="What's up guys, I'm Kevin!" />
+
+            <TextView
+                android:id="@+id/employee_description"
+                style="@style/TextSpeaking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.5"
+                android:layout_marginTop="@dimen/small_margin"
+                android:lineSpacingExtra="@dimen/smallest_margin"
+                app:layout_constraintStart_toStartOf="@id/employee_name"
+                app:layout_constraintTop_toBottomOf="@id/employee_intro"
+                tools:text="Working in Quality Assurance, I make sure our apps are as flawless and bug-free as possible. When I'm not at work, I enjoy playing video games and spending time with my friends and family. I also enjoy taking on new and interesting challenges." />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

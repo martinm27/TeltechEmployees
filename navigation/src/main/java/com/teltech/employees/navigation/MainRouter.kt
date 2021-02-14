@@ -35,11 +35,6 @@ abstract class MainRouter(
         }
     }
 
-    /** Dispatches action on main thread by always posting the action. */
-    protected fun dispatchOnMainThreadWithForcedPost(action: () -> Unit) {
-        mainHandler.post(action::invoke)
-    }
-
     protected fun dispatchOnMainThreadWithThrottle(action: () -> Unit) {
         dispatchOnMainThread {
             System.currentTimeMillis().let {
@@ -50,22 +45,4 @@ abstract class MainRouter(
             }
         }
     }
-
-    protected fun propagateBackToTopFragment(fragmentManager: FragmentManager): Boolean {
-        return callIfPresent(
-            findBackPropagatingFragment(fragmentManager),
-            BackPropagatingFragment::back
-        )
-    }
-
-    protected fun callIfPresent(
-        backPropagatingFragment: BackPropagatingFragment?,
-        function: (BackPropagatingFragment) -> Boolean
-    ): Boolean {
-        return backPropagatingFragment?.let(function::invoke) ?: false
-    }
-
-    protected fun findBackPropagatingFragment(fragmentManager: FragmentManager): BackPropagatingFragment? =
-        fragmentManager.fragments.reversed()
-            .firstOrNull { it is BackPropagatingFragment } as? BackPropagatingFragment
 }
