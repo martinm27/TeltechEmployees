@@ -17,6 +17,7 @@ fun masterModule(): Module = module {
     viewModel {
         MasterViewModel(
             get(),
+            get(),
             mainThreadScheduler = get(named(MAIN_SCHEDULER)),
             backgroundScheduler = get(named(BACKGROUND_SCHEDULER)),
             routingActionsDispatcher = get()

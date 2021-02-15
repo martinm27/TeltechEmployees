@@ -2,22 +2,24 @@ package com.teltech.employees
 
 import com.teltech.employees.employeeslib.mapper.generateImageUrl
 import com.teltech.employees.employeeslib.model.Employee
-import com.teltech.employees.employeeslib.usecase.QueryAllEmployees
+import com.teltech.employees.employeeslib.source.EmployeesSource
+import com.teltech.employees.employeeslib.source.EmployeesSourceImpl
 import com.teltech.employees.network.model.APIEmployee
 import com.teltech.employees.network.service.EmployeesService
 import io.reactivex.Single
+import io.reactivex.schedulers.Schedulers
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 
-class QueryAllEmployeesTest {
+class EmployeesSourceTest {
 
     @Mock
     private lateinit var employeesService: EmployeesService
 
-    private lateinit var queryAllEmployees: QueryAllEmployees
+    private lateinit var employeesSource: EmployeesSource
 
     private lateinit var emptyDepartmentEmployee: APIEmployee
     private lateinit var nullAgencyEmployee: APIEmployee
@@ -31,14 +33,16 @@ class QueryAllEmployeesTest {
     fun setUp() {
         MockitoAnnotations.openMocks(this)
 
-        queryAllEmployees = QueryAllEmployees(employeesService)
+        `when`(employeesService.getEmployees()).thenReturn(Single.just(emptyList()))
+
+        employeesSource = EmployeesSourceImpl(employeesService, Schedulers.trampoline())
     }
 
     @Test
     fun `should map to empty list when api returns empty list`() {
         `when`(employeesService.getEmployees()).thenReturn(Single.just(emptyList()))
 
-        val testResult = queryAllEmployees().test()
+        val testResult = employeesSource.employees().test()
         testResult.assertValue(emptyList())
 
         testResult.dispose()
@@ -48,7 +52,7 @@ class QueryAllEmployeesTest {
     fun `should map list of nulls to empty list`() {
         `when`(employeesService.getEmployees()).thenReturn(Single.just(listOf(null, null, null)))
 
-        val testResult = queryAllEmployees().test()
+        val testResult = employeesSource.employees().test()
         testResult.assertValue(emptyList())
 
         testResult.dispose()
@@ -62,7 +66,7 @@ class QueryAllEmployeesTest {
             Single.just(listOf(emptyDepartmentEmployee))
         )
 
-        val testResult = queryAllEmployees().test()
+        val testResult = employeesSource.employees().test()
         testResult.assertValue(listOf(emptyDepartmentEmployeeMapped))
 
         testResult.dispose()
@@ -74,7 +78,7 @@ class QueryAllEmployeesTest {
 
         `when`(employeesService.getEmployees()).thenReturn(Single.just(listOf(nullAgencyEmployee)))
 
-        val testResult = queryAllEmployees().test()
+        val testResult = employeesSource.employees().test()
         testResult.assertValue(listOf(nullAgencyEmployeeMapped))
 
         testResult.dispose()
@@ -85,7 +89,7 @@ class QueryAllEmployeesTest {
         initValues()
 
         `when`(employeesService.getEmployees()).thenReturn(Single.just(listOf(nullImageEmployee)))
-        val testResult = queryAllEmployees().test()
+        val testResult = employeesSource.employees().test()
 
         testResult.assertValue(listOf(nullImageEmployeeMapped))
 

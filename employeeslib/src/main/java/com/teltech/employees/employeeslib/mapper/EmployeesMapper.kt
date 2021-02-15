@@ -47,9 +47,9 @@ fun generateImageUrl(image: String?): String {
 }
 
 fun toEmployeeName(name: String, surname: String) =
-    if (name == UNKNOWN || surname == UNKNOWN) {
-        UNKNOWN
-    } else {
-        StringBuilder().append(name).append(SPACING_SEPARATOR).append(surname).toString()
+    when {
+        name == UNKNOWN -> surname
+        surname == UNKNOWN -> name
+        else -> StringBuilder().append(name).append(SPACING_SEPARATOR).append(surname).toString()
     }
 

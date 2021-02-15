@@ -31,6 +31,7 @@ class MasterFragment :
             adapter = masterAdapter
             addCustomDecoration(context, R.drawable.ic_vertical_divider)
         }
+        binding.swipeContainer.setOnRefreshListener(model::refreshEmployees)
         setStatusBarColor(android.R.color.white)
     }
 
@@ -42,6 +43,7 @@ class MasterFragment :
     }
 
     private fun renderEmployees(employees: List<EmployeeViewStateModel>) {
+        binding.swipeContainer.isRefreshing = false
         masterAdapter.submitList(employees)
 
         with(binding) {

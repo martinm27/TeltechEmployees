@@ -4,6 +4,7 @@ import com.teltech.employees.coreui.BaseViewModel
 import com.teltech.employees.employeeslib.mapper.toEmployeeName
 import com.teltech.employees.employeeslib.model.Employee
 import com.teltech.employees.employeeslib.usecase.QueryAllEmployees
+import com.teltech.employees.employeeslib.usecase.RefreshEmployees
 import com.teltech.employees.master.ui.mapper.toViewStateModel
 import com.teltech.employees.navigation.RoutingActionsDispatcher
 import com.teltech.employees.navigation.model.EmployeeParcelable
@@ -11,6 +12,7 @@ import io.reactivex.Scheduler
 
 class MasterViewModel(
     queryAllEmployees: QueryAllEmployees,
+    private val refreshEmployees: RefreshEmployees,
     mainThreadScheduler: Scheduler,
     backgroundScheduler: Scheduler,
     routingActionsDispatcher: RoutingActionsDispatcher
@@ -35,6 +37,10 @@ class MasterViewModel(
             MasterViewState.EmployeesListViewState(employeeList.map(::toViewStateModel))
         }
 
+    fun refreshEmployees() {
+        runCommand(refreshEmployees.invoke())
+    }
+
     fun showEmployeeDetails(index: Int) = dispatchRoutingAction {
         it.showEmployeeDetails(toEmployeeParcelable(employeeList[index]))
     }
@@ -50,5 +56,6 @@ class MasterViewModel(
                 department
             )
         }
+
 }
 

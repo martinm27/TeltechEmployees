@@ -4,7 +4,6 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkRequest
-import com.teltech.employees.core.extension.shareReplayLatest
 import io.reactivex.Flowable
 import io.reactivex.Scheduler
 import io.reactivex.processors.BehaviorProcessor
@@ -20,7 +19,6 @@ class InternetConnectionSourceImpl(
     private val internetConnectionStatusFlowable: Flowable<Boolean> =
         internetConnectionBehaviorProcessor.distinctUntilChanged()
             .observeOn(backgroundScheduler)
-            .shareReplayLatest()
 
     init {
         startNetworkCallback()

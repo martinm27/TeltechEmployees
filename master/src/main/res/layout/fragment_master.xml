@@ -8,29 +8,36 @@
     <TextView
         android:id="@+id/employees_title"
         style="@style/TextTitle"
-        android:text="@string/master_employeesTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/normal_margin"
         android:layout_marginTop="@dimen/normal_margin"
+        android:text="@string/master_employeesTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/employees_recyclerView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/normal_margin"
-        android:clipToPadding="false"
-        android:paddingTop="@dimen/normal_margin"
-        android:paddingBottom="@dimen/normal_margin"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/employees_title"
-        tools:itemCount="6"
-        tools:listitem="@layout/item_employee" />
+        app:layout_constraintTop_toBottomOf="@+id/employees_title">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/employees_recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/normal_margin"
+            android:paddingBottom="@dimen/normal_margin"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="6"
+            tools:listitem="@layout/item_employee" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <TextView
         android:id="@+id/employees_emptyState"
@@ -38,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/employees_emptyList"
+        android:text="@string/master_employees_emptyList"
         android:textStyle="italic|bold"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
