@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_main_container"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_root"
     android:layout_width="match_parent"
-    android:background="@android:color/white"
     android:layout_height="match_parent">
 
-</androidx.fragment.app.FragmentContainerView>
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/activity_main_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white" />
+
+    <fragment
+        android:id="@+id/main_connectionBarFragment"
+        android:name="com.teltech.employees.connectionbar.ui.ConnectionBarFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</FrameLayout>

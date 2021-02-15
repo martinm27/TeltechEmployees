@@ -41,6 +41,11 @@
         <item name="android:textSize">@dimen/large_text</item>
     </style>
 
+    <style name="TextMedium" parent="BaseText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/medium_textSize</item>
+    </style>
+
     <style name="TextSubtitle" parent="BaseText">
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">@dimen/small_medium_textSize</item>

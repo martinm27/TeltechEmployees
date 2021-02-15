@@ -38,7 +38,10 @@ abstract class BaseFragment<ViewState : Any, Binding : ViewBinding>(
         binding.root.isClickable = true // To avoid clicks passing through
 
         binding.initialiseView(view, savedInstanceState)
+    }
 
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
         model.viewStates().forEach { addDisposable(it.subscribe(this::render, Timber::e)) }
     }
 

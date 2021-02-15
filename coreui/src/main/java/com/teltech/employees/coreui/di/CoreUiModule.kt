@@ -1,5 +1,7 @@
 package com.teltech.employees.coreui.di
 
+import android.app.Application
+import android.content.res.Resources
 import com.teltech.employees.coreui.R
 import com.teltech.employees.coreui.utils.CircularProgressDrawableFactory
 import org.koin.android.ext.koin.androidContext
@@ -14,4 +16,6 @@ fun coreUiModule(): Module = module {
             androidContext().resources.getDimension(R.dimen.coreui_default_spinner_radius)
         )
     }
+
+    single<Resources> { get<Application>().resources }
 }

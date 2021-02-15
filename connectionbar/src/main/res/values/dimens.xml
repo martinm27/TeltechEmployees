@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="connectionbar_elevation">8dp</dimen>
+    <dimen name="connectionbar_titleText_drawablePadding">2dp</dimen>
+    <dimen name="connectionbar_titleText_padding">3dp</dimen>
+</resources>

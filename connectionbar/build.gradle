@@ -14,11 +14,8 @@ dependencies {
     implementation project(":core")
     implementation project(":coreui")
     implementation project(":navigation")
-    implementation project(":imagelib")
-    implementation project(":employeeslib")
+    implementation project(":network")
 
-    implementation Layout.recyclerView
     implementation Layout.constraintLayout
-    implementation Layout.swipeRefreshLayout
     implementation UI.materialComponents
 }

@@ -1,6 +1,7 @@
 package com.teltech.employees.application
 
 import android.app.Application
+import com.teltech.employees.connectionbar.di.connectionBarModule
 import com.teltech.employees.core.appconfig.RxJavaErrorHandlingAppConfig
 import com.teltech.employees.core.appconfig.TimberAppConfig
 import com.teltech.employees.core.di.threadingModule
@@ -33,6 +34,7 @@ class TeltechEmployeesApplication : Application() {
                 listOf(
                     appModule(),
                     coreUiModule(),
+                    connectionBarModule(),
                     detailsModule(),
                     employeesLibModule(),
                     imageLibModule(),

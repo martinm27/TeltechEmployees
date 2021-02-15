@@ -1,11 +1,16 @@
 package com.teltech.employees.network.di
 
+import com.teltech.employees.core.di.BACKGROUND_SCHEDULER
 import com.teltech.employees.network.BuildConfig
+import com.teltech.employees.network.connection.InternetConnectionSource
+import com.teltech.employees.network.connection.InternetConnectionSourceImpl
 import com.teltech.employees.network.service.EmployeesService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.Module
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -37,5 +42,9 @@ fun networkModule(): Module = module {
             .client(get())
             .build()
             .create(EmployeesService::class.java)
+    }
+
+    single<InternetConnectionSource> {
+        InternetConnectionSourceImpl(androidContext(), get(named(BACKGROUND_SCHEDULER)))
     }
 }

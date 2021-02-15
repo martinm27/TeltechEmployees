@@ -14,18 +14,7 @@
         android:layout_marginTop="@dimen/small_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_arrow_back"/>
-
-    <ImageView
-        android:id="@+id/employee_image"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/details_employee_imageHeight"
-        android:layout_marginTop="@dimen/normal_margin"
-        android:fitsSystemWindows="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/details_backButton"
-        tools:src="@drawable/ic_placeholder" />
+        app:srcCompat="@drawable/ic_arrow_back" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -40,19 +29,30 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/employee_image">
+        app:layout_constraintTop_toBottomOf="@id/details_backButton">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/employee_image"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/details_employee_imageHeight"
+                android:fitsSystemWindows="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_placeholder" />
 
             <TextView
                 android:id="@+id/employee_name"
                 style="@style/TextTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normal_margin"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/employee_image"
                 tools:text="Jacques Webster" />
 
             <TextView
@@ -103,9 +103,9 @@
                 style="@style/TextSpeaking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:lineSpacingMultiplier="1.5"
                 android:layout_marginTop="@dimen/small_margin"
                 android:lineSpacingExtra="@dimen/smallest_margin"
+                android:lineSpacingMultiplier="1.5"
                 app:layout_constraintStart_toStartOf="@id/employee_name"
                 app:layout_constraintTop_toBottomOf="@id/employee_intro"
                 tools:text="Working in Quality Assurance, I make sure our apps are as flawless and bug-free as possible. When I'm not at work, I enjoy playing video games and spending time with my friends and family. I also enjoy taking on new and interesting challenges." />

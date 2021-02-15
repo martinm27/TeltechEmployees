@@ -10,4 +10,6 @@
     <color name="black">#171A32</color>
     <color name="dark_gray">#8C8FA9</color>
     <color name="white_pressed">#D6D7DF</color>
+    <color name="red">#ED5959</color>
+    <color name="green">#62CBB4</color>
 </resources>

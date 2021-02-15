@@ -1,0 +1,4 @@
+<resources>
+    <string name="connectionbar_connectedStatus">Connected</string>
+    <string name="connectionbar_disconnectedStatus">No internet connection</string>
+</resources>

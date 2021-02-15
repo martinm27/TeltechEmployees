@@ -19,6 +19,7 @@ dependencies {
     implementation project(":network")
     implementation project(":navigation")
     implementation project(":imagelib")
+    implementation project(":connectionbar")
 
     implementation Layout.fragmentContainer
 }
