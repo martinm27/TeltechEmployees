@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="connectionbar_connectedStatus">Connected</string>
+    <string name="connectionbar_disconnectedStatus">No internet connection</string>
+
+    <string name="master_employees_emptyList">No employees</string>
+    <string name="master_employeesTitle">Employees</string>
+    <string name="details_department">Department:</string>
+</resources>
