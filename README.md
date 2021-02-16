@@ -11,6 +11,8 @@ Extra information:
 
 * Project is using **modularization** for separation of concerns and **Koin** for dependency injection. 
 
+* `ViewBinding` is used for accessing UI fields.
+
 * **Retrofit** is used for fetching API data. 
 
 * Image loading is handled by **Glide**.
@@ -27,17 +29,30 @@ Extra information:
 
 ## Architecture
 
+[Image](https://imgur.com/DgFVJWc)
+
 Where to start...The concept is fairly simple, `ViewState` is an object that represents UI state at a certain point in time. `View` (Activity/Fragment) subscribes to the *communication channel* and observes `ViewState` changes. `ViewModel` coordinates business data from `Usecases` and prepares `ViewState` object for rendering. When a `ViewState` object preparation is finished, it gets published to the *communication channel* which notifies `View` that new view state needs to be rendered on the UI. `Usecase` is a pure business logic class which should be named properly and by name signature desribe what is its role (e.g. `QueryAllEmployees`). Use cases can be combined and shared between in order to encapsulate whole domain layer. `Source` is another name for `Repository` and its role is to expose network/database data to use cases. In this type of classes, there could be some reactive logic present based on the network layer complexity. Also, `Source` should map API data to domain readable data. `Service` class needs to expose all network communication using Retrofit annotations and associated mechanisms.
 
-It is important to emphasize that all data processing is handled by the **background thread (Scheduler)** except for rendering UI. `ViewModel` publishes `ViewState` changes on Android main thread.
+It is important to emphasize that all data processing is handled by the **background thread (Scheduler)** except for rendering UI. `ViewModel` publishes `ViewState` changes on Android main thread. 
 
 ### TLDR;
-* `ViewState` - an object that represents UI state (`View`) at a certain point in time
+* `ViewState` - an object that represents UI state (`View`) at a certain point in time. There could be several `ViewState` objects for one screen (e.g. empty data, error and happy-path screens).
 * `View` (Activity/Fragment) - subscribes to the *communication channel* and observes `ViewState` changes that need to be rendered
 * `ViewModel` - coordinates business data from `Usecases`, prepares `ViewState` object for rendering and publishes `ViewState` changes.
 * `Usecase` - pure business logic class which defines the project domain
 * `Source` (`Repository`) - exposes network/database data to use cases.
 * `Service` - exposes all network communication using Retrofit annotations and associated mechanisms
+
+### BaseViewModel
+
+This class is essential for this type of architecture. It has several roles:
+1. Coordinates all `ViewState` subscriptions and puts them to map. `ViewState` is key, `ViewStatePublisher` is value. `View` has a reference to `ViewModel` and can subscribe on all `ViewState`s that could be possibly rendered at any point in time.
+2. Subscriptions are added to composite disposable in order to stay alive while the `ViewModel` is alive.
+3. Clears composite disposable on clearing `ViewModel`.
+4. Handles navigation because it has a reference to `RoutingActionsDispatcher` which is described next.
+
+
+## Navigation
 
 
 
@@ -59,7 +74,7 @@ The key part is that feature module has a dependency on lib module (getting busi
 
 
 
-## DI
+## Dependency injection
 
 By using Koin, definitions are described in **modules**. A module is a logical space which helps in organizing definitions and it complements nicely with modularization strategy. 
 **Every project module has one Koin module which encapsulates all the related definitions**. Definitions are lazy, and then are resolved only when a a component is requesting it.
