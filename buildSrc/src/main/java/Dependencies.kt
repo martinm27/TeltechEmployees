@@ -65,6 +65,14 @@ object Log {
     val timber = "com.jakewharton.timber:timber:$timber_version"
 }
 
+object Firebase {
+    private const val firebase_analytics_version = "17.4.2"
+    private const val firebase_crashlytics_version = "17.0.0"
+
+    const val analytics = "com.google.firebase:firebase-analytics:$firebase_analytics_version"
+    const val crashlytics = "com.google.firebase:firebase-crashlytics:$firebase_crashlytics_version"
+}
+
 object JUnit {
     private val junit_version = "4.13"
     private val test_ext_junit_version = "1.1.1"
