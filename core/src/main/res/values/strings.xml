@@ -6,4 +6,6 @@
     <string name="master_employees_emptyList">No employees</string>
     <string name="master_employeesTitle">Employees</string>
     <string name="details_department">Department:</string>
+
+    <string name="master_employees_error">Error happened. Try again.</string>
 </resources>

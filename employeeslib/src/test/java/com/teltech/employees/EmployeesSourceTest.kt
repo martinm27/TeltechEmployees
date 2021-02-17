@@ -2,12 +2,12 @@ package com.teltech.employees
 
 import com.teltech.employees.employeeslib.mapper.generateImageUrl
 import com.teltech.employees.employeeslib.model.Employee
+import com.teltech.employees.employeeslib.model.EmployeesResponse
 import com.teltech.employees.employeeslib.source.EmployeesSource
 import com.teltech.employees.employeeslib.source.EmployeesSourceImpl
 import com.teltech.employees.network.model.APIEmployee
 import com.teltech.employees.network.service.EmployeesService
 import io.reactivex.Single
-import io.reactivex.schedulers.Schedulers
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -35,7 +35,17 @@ class EmployeesSourceTest {
 
         `when`(employeesService.getEmployees()).thenReturn(Single.just(emptyList()))
 
-        employeesSource = EmployeesSourceImpl(employeesService, Schedulers.trampoline())
+        employeesSource = EmployeesSourceImpl(employeesService)
+    }
+
+    @Test
+    fun `should map to failure response when api throws exception`() {
+        `when`(employeesService.getEmployees()).thenReturn(Single.error(Throwable("Error happened")))
+
+        val testResult = employeesSource.employees().test()
+        testResult.assertValue(EmployeesResponse.Failure)
+
+        testResult.dispose()
     }
 
     @Test
@@ -43,7 +53,7 @@ class EmployeesSourceTest {
         `when`(employeesService.getEmployees()).thenReturn(Single.just(emptyList()))
 
         val testResult = employeesSource.employees().test()
-        testResult.assertValue(emptyList())
+        testResult.assertValue(EmployeesResponse.Success(emptyList()))
 
         testResult.dispose()
     }
@@ -53,7 +63,7 @@ class EmployeesSourceTest {
         `when`(employeesService.getEmployees()).thenReturn(Single.just(listOf(null, null, null)))
 
         val testResult = employeesSource.employees().test()
-        testResult.assertValue(emptyList())
+        testResult.assertValue(EmployeesResponse.Success(emptyList()))
 
         testResult.dispose()
     }
@@ -67,7 +77,7 @@ class EmployeesSourceTest {
         )
 
         val testResult = employeesSource.employees().test()
-        testResult.assertValue(listOf(emptyDepartmentEmployeeMapped))
+        testResult.assertValue(EmployeesResponse.Success(listOf(emptyDepartmentEmployeeMapped)))
 
         testResult.dispose()
     }
@@ -79,7 +89,7 @@ class EmployeesSourceTest {
         `when`(employeesService.getEmployees()).thenReturn(Single.just(listOf(nullAgencyEmployee)))
 
         val testResult = employeesSource.employees().test()
-        testResult.assertValue(listOf(nullAgencyEmployeeMapped))
+        testResult.assertValue(EmployeesResponse.Success(listOf(nullAgencyEmployeeMapped)))
 
         testResult.dispose()
     }
@@ -91,7 +101,7 @@ class EmployeesSourceTest {
         `when`(employeesService.getEmployees()).thenReturn(Single.just(listOf(nullImageEmployee)))
         val testResult = employeesSource.employees().test()
 
-        testResult.assertValue(listOf(nullImageEmployeeMapped))
+        testResult.assertValue(EmployeesResponse.Success(listOf(nullImageEmployeeMapped)))
 
         testResult.dispose()
     }

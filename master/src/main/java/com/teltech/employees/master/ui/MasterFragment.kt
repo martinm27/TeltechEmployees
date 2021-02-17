@@ -31,7 +31,10 @@ class MasterFragment :
             adapter = masterAdapter
             addCustomDecoration(context, R.drawable.ic_vertical_divider)
         }
-        binding.swipeContainer.setOnRefreshListener(model::refreshEmployees)
+        binding.employeesErrorState.setOnClickListener {
+            model.refreshEmployees()
+            renderLoadingState()
+        }
         setStatusBarColor(android.R.color.white)
     }
 
@@ -39,22 +42,47 @@ class MasterFragment :
         when (viewState) {
             is MasterViewState.EmployeesListViewState -> renderEmployees(viewState.employeeList)
             is MasterViewState.EmptyViewState -> renderEmptyState()
+            is MasterViewState.ErrorViewState -> renderErrorState()
+            is MasterViewState.LoadingViewState -> renderLoadingState()
+        }
+    }
+
+    private fun renderLoadingState() {
+        with(binding) {
+            swipeContainer.hide()
+            employeesErrorState.hide()
+            employeesEmptyState.hide()
+            employeesProgressBar.show()
+        }
+    }
+
+    private fun renderErrorState() {
+        with(binding) {
+            swipeContainer.hide()
+            employeesProgressBar.hide()
+            employeesEmptyState.hide()
+            employeesErrorState.show()
         }
     }
 
     private fun renderEmployees(employees: List<EmployeeViewStateModel>) {
-        binding.swipeContainer.isRefreshing = false
         masterAdapter.submitList(employees)
 
         with(binding) {
             employeesEmptyState.hide()
-            employeesRecyclerView.show()
+            employeesProgressBar.hide()
+            employeesErrorState.hide()
+            swipeContainer.isRefreshing = false
+            swipeContainer.show()
+            swipeContainer.setOnRefreshListener(model::refreshEmployees)
         }
     }
 
     private fun renderEmptyState() {
         with(binding) {
-            employeesRecyclerView.hide()
+            swipeContainer.hide()
+            employeesProgressBar.hide()
+            employeesErrorState.hide()
             employeesEmptyState.show()
         }
     }

@@ -24,6 +24,7 @@ class RouterImpl(
 
     override fun showEmployeeDetails(employeeParcelable: EmployeeParcelable) =
         fragmentManager.inTransactionAndAddToBackStack {
+            applyFadeInEnterAndFadeOutExitAnimation()
             add(
                 MAIN_FLOW_CONTAINER,
                 DetailsFragment.newInstance(employeeParcelable),
