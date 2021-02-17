@@ -2,7 +2,6 @@ package com.teltech.employees.coreui
 
 import androidx.annotation.CallSuper
 import androidx.lifecycle.ViewModel
-import com.teltech.employees.core.extension.exponentialRetry
 import com.teltech.employees.navigation.router.Router
 import com.teltech.employees.navigation.routingmediator.RoutingMediator
 import io.reactivex.Completable
@@ -61,7 +60,6 @@ abstract class BaseViewModel<BaseViewState : Any>(
                 .onBackpressureLatest()
                 .observeOn(mainThreadScheduler)
                 .subscribeOn(backgroundScheduler)
-                .exponentialRetry(scheduler = backgroundScheduler)
                 .subscribe(viewStatePublisher::onNext, Timber::e)
         )
     }
