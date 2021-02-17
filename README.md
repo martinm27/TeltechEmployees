@@ -89,7 +89,7 @@ Koin is initialised in the application class by collecting all module declaratio
 
 Master-detail flow is implemented using `Parcelable` data object that gets bundled as an argument between the two fragments. Personally, I don't like this implementation and would be more "satisfied" if there was some kind of unique distinction between the employees (like ID number). Then I would be free to implement the business logic layer as needed, e.g. using database for local data persistance and calling `QueryEmployeeById` or firing another API call which would provide most recent data on certain employee's details. With that approach I would need to send just an ID number between fragments and be sure of data consistence and freshness.
 
-
+Regarding nullable types in Kotlin, it would be best to use KotlinX serialization for network data parsing but I didn't really have time to go through the documentation yet.
 
 
 
