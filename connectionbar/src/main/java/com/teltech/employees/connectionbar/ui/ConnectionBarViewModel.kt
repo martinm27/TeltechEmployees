@@ -5,7 +5,7 @@ import com.teltech.employees.connectionbar.ui.ConnectionBarStatus.*
 import com.teltech.employees.connectionbar.ui.ConnectionStatusViewStateModel.*
 import com.teltech.employees.connectionbar.usecase.QueryInternetConnection
 import com.teltech.employees.coreui.BaseViewModel
-import com.teltech.employees.navigation.RoutingActionsDispatcher
+import com.teltech.employees.navigation.routingmediator.RoutingMediator
 import io.reactivex.Flowable
 import io.reactivex.Scheduler
 import java.util.concurrent.TimeUnit
@@ -17,11 +17,11 @@ class ConnectionBarViewModel(
     queryInternetConnection: QueryInternetConnection,
     mainThreadScheduler: Scheduler,
     private val backgroundScheduler: Scheduler,
-    routingActionsDispatcher: RoutingActionsDispatcher
+    routingActionsMediator: RoutingMediator
 ) : BaseViewModel<ConnectionBarViewState>(
     mainThreadScheduler,
     backgroundScheduler,
-    routingActionsDispatcher
+    routingActionsMediator
 ) {
 
     private val connectedStatus: ConnectedStatusViewStateModel by lazy {

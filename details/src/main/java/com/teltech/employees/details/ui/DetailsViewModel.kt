@@ -3,7 +3,7 @@ package com.teltech.employees.details.ui
 import com.teltech.employees.core.constants.UNKNOWN
 import com.teltech.employees.coreui.BaseViewModel
 import com.teltech.employees.navigation.model.EmployeeParcelable
-import com.teltech.employees.navigation.RoutingActionsDispatcher
+import com.teltech.employees.navigation.routingmediator.RoutingMediator
 import io.reactivex.Flowable
 import io.reactivex.Scheduler
 
@@ -15,11 +15,11 @@ class DetailsViewModel(
     employeeParcelable: EmployeeParcelable,
     mainThreadScheduler: Scheduler,
     backgroundScheduler: Scheduler,
-    routingActionsDispatcher: RoutingActionsDispatcher
+    routingActionsMediator: RoutingMediator
 ) : BaseViewModel<DetailsViewState>(
     mainThreadScheduler,
     backgroundScheduler,
-    routingActionsDispatcher
+    routingActionsMediator
 ) {
     init {
         query(Flowable.just(DetailsViewState(toViewStateModel(employeeParcelable))))

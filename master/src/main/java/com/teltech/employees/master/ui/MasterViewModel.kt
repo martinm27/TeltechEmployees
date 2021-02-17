@@ -11,8 +11,8 @@ import com.teltech.employees.employeeslib.model.EmployeesResponse
 import com.teltech.employees.employeeslib.usecase.QueryAllEmployees
 import com.teltech.employees.employeeslib.usecase.RefreshEmployees
 import com.teltech.employees.master.ui.mapper.toViewStateModel
-import com.teltech.employees.navigation.RoutingActionsDispatcher
 import com.teltech.employees.navigation.model.EmployeeParcelable
+import com.teltech.employees.navigation.routingmediator.RoutingMediator
 import io.reactivex.Scheduler
 
 class MasterViewModel(
@@ -20,11 +20,11 @@ class MasterViewModel(
     queryAllEmployees: QueryAllEmployees,
     mainThreadScheduler: Scheduler,
     backgroundScheduler: Scheduler,
-    routingActionsDispatcher: RoutingActionsDispatcher
+    routingActionsMediator: RoutingMediator
 ) : BaseViewModel<MasterViewState>(
     mainThreadScheduler,
     backgroundScheduler,
-    routingActionsDispatcher
+    routingActionsMediator
 ) {
 
     private var employeeList = mutableListOf<Employee>()

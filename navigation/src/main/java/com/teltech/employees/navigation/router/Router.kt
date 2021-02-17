@@ -1,12 +1,10 @@
-package com.teltech.employees.navigation
+package com.teltech.employees.navigation.router
 
 import com.teltech.employees.navigation.model.EmployeeParcelable
 
 interface Router {
 
     fun finishHostActivity()
-
-    fun clearAll()
 
     fun goBack()
 

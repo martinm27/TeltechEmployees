@@ -1,6 +1,7 @@
-package com.teltech.employees.navigation
+package com.teltech.employees.navigation.extensions
 
 import androidx.fragment.app.FragmentTransaction
+import com.teltech.employees.navigation.R
 
 fun FragmentTransaction.applyFadeInEnterAndFadeOutExitAnimation() {
     setCustomAnimations(

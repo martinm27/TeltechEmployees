@@ -1,5 +1,7 @@
-package com.teltech.employees.navigation
+package com.teltech.employees.navigation.routingmediator
 
+import com.teltech.employees.navigation.RoutingActionConsumer
+import com.teltech.employees.navigation.router.Router
 import timber.log.Timber
 import java.util.*
 

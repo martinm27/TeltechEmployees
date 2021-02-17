@@ -6,7 +6,12 @@ import androidx.fragment.app.FragmentManager
 import com.teltech.employees.R
 import com.teltech.employees.details.ui.DetailsFragment
 import com.teltech.employees.master.ui.MasterFragment
+import com.teltech.employees.navigation.extensions.applyFadeInEnterAndFadeOutExitAnimation
+import com.teltech.employees.navigation.extensions.inTransaction
+import com.teltech.employees.navigation.extensions.inTransactionAndAddToBackStack
 import com.teltech.employees.navigation.model.EmployeeParcelable
+import com.teltech.employees.navigation.router.MainRouter
+import com.teltech.employees.navigation.router.Router
 
 private const val LAST_FRAGMENT = 0
 
@@ -31,8 +36,6 @@ class RouterImpl(
                 DetailsFragment.TAG
             )
         }
-
-    override fun clearAll() = fragmentManager.safeClearBackStack()
 
     override fun goBack() = dispatchOnMainThreadWithThrottle(this::goBackInternal)
 

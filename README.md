@@ -9,6 +9,8 @@ Project is written in **Kotlin** following best practices. **Clean architecture 
 
 Extra information:
 
+* Single activity app with two fragments
+
 * Project is using **modularization** for separation of concerns and **Koin** for dependency injection. 
 
 * `ViewBinding` is used for accessing UI fields.
@@ -54,7 +56,7 @@ This class is essential for this type of architecture. It has several roles:
 
 ## Navigation
 
-
+Navigation is handled by the Router. This class has a notion of the fragment manager and verifies fragment transactions. Activity registers as a **routing actions consumer** which means that all routing actions are consumed while the activity is resumed and if not (app is in background and routing action triggers in a reactive manner), routing actions are queued and flushed once the consumer registers again (app returns to foreground). BaseViewModel has a reference to RoutingMediator which exposes dispatching routing actions.
 
 
 

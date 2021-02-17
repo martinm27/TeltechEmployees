@@ -3,8 +3,8 @@ package com.teltech.employees.coreui
 import androidx.annotation.CallSuper
 import androidx.lifecycle.ViewModel
 import com.teltech.employees.core.extension.exponentialRetry
-import com.teltech.employees.navigation.Router
-import com.teltech.employees.navigation.RoutingActionsDispatcher
+import com.teltech.employees.navigation.router.Router
+import com.teltech.employees.navigation.routingmediator.RoutingMediator
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Scheduler
@@ -20,7 +20,7 @@ import kotlin.reflect.KClass
 abstract class BaseViewModel<BaseViewState : Any>(
     private val mainThreadScheduler: Scheduler,
     private val backgroundScheduler: Scheduler,
-    private val routingActionsDispatcher: RoutingActionsDispatcher
+    private val routingMediator: RoutingMediator
 ) : ViewModel() {
 
     private val typeToPublisher: MutableMap<KClass<BaseViewState>, BehaviorProcessor<BaseViewState>> =
@@ -43,11 +43,11 @@ abstract class BaseViewModel<BaseViewState : Any>(
 
     /** Invoke to route to another screen */
     protected fun dispatchRoutingAction(routingAction: (Router) -> Unit) =
-        routingActionsDispatcher.dispatch(routingAction)
+        routingMediator.dispatch(routingAction)
 
     /** Invoke to route to another screen. If another routing action with the same [actionId] is already queued, the old one will be removed. */
     protected fun dispatchDistinctRoutingAction(actionId: String, routingAction: (Router) -> Unit) =
-        routingActionsDispatcher.dispatchDistinct(actionId, routingAction)
+        routingMediator.dispatchDistinct(actionId, routingAction)
 
     @Deprecated("This is for internal usage only! Protected because of inline function")
     protected fun queryInternal(key: KClass<BaseViewState>, flowable: Flowable<BaseViewState>) {

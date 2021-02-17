@@ -19,7 +19,7 @@ fun connectionBarModule(): Module = module {
             get(),
             mainThreadScheduler = get(named(MAIN_SCHEDULER)),
             backgroundScheduler = get(named(BACKGROUND_SCHEDULER)),
-            routingActionsDispatcher = get()
+            routingActionsMediator = get()
         )
     }
 
