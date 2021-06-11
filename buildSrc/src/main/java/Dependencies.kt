@@ -32,10 +32,10 @@ object Layout {
 }
 
 object DI {
-    private val koin_version = "2.1.5"
+    private val koin_version = "2.2.3"
 
-    val koin = "org.koin:koin-core:$koin_version"
-    val koinViewModel = "org.koin:koin-android-viewmodel:$koin_version"
+    val koin = "io.insert-koin:koin-core:$koin_version"
+    val koinViewModel = "io.insert-koin:koin-android-viewmodel:$koin_version"
 }
 
 object Glide {

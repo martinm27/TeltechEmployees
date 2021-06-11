@@ -28,6 +28,7 @@ fun networkModule(): Module = module {
     single<OkHttpClient> {
         OkHttpClient.Builder().apply {
             connectTimeout(100, TimeUnit.SECONDS)
+            callTimeout(300, TimeUnit.SECONDS)
             readTimeout(100, TimeUnit.SECONDS)
             addInterceptor(get())
         }

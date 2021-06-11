@@ -1,5 +1,5 @@
-include ':connectionbar'
 rootProject.name = "TeltechEmployees"
+include ':connectionbar'
 include ':app'
 include ':core'
 include ':coreui'
